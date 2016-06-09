@@ -13,8 +13,8 @@ RSpec.describe Vendor, type: :model do
 
   describe ".self.o_auth_find_or_create_by" do
     scenario "it should find a vendor who already exists" do
-      vendor = create(:o_auth_vendor)
-      
+      vendor = create(:vendor)
+
       auth_info = OmniAuth::AuthHash.new
       auth_info[:info] = {email: "vendor@example.com"}
 
