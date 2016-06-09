@@ -6,14 +6,14 @@ class Event < ActiveRecord::Base
 
   def self.this_year
     start = Date.yesterday
-    finish = Date.new(start.year + 1, 1, 1)
-    where(date: start..finish)
+    finish = start.end_of_year
+    where(date: start..finish).order(:date)
   end
 
   def self.next_year
     date = Date.today
-    start = Date.new(date.year + 1, 1, 1)
+    start = date.end_of_year + 1
     finish = date.next_year
-    where(date: start..finish)
+    where(date: start..finish).order(:date)
   end
 end
