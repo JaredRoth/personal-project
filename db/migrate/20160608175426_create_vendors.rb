@@ -4,6 +4,7 @@ class CreateVendors < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :business_name
+      t.string :email
       t.string :product_description
       t.string :street_address
       t.string :city

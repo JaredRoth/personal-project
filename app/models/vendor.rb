@@ -2,12 +2,15 @@ class Vendor < ActiveRecord::Base
   has_many :vendors_categories
   has_many :categories, through: :vendors_categories
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :business_name, presence: true
-  validates :product_description, presence: true
-  validates :street_address, presence: true
-  validates :city, presence: true
-  validates :state, presence: true
-  validates :zip, presence: true
+  validates :email, presence: true, uniqueness: true
+
+  def self.o_auth_find_or_create_by(auth_info)
+    vendor = find_by(email: auth_info.info.email)
+    vendor = create_vendor_from(auth_info) if vendor.nil?
+    vendor
+  end
+
+  def self.create_vendor_from(auth_info)
+    create(email: auth_info.info.email)
+  end
 end
