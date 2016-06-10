@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   def self.this_year
     start = Date.yesterday
     finish = start.end_of_year
-    where(date: start..finish).order(:date)
+    events = where(date: start..finish).order(:date)
   end
 
   def self.next_year
