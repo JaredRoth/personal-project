@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/auth/github", as: :github_login
   get "/auth/github/callback", to: "sessions#create"
+
+  resource :vendor, only: [:edit, :update]
 end

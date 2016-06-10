@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.feature "Vendor can logout" do
   scenario "They see the login link" do
+    vendor = create(:full_vendor)
+
     visit github_login_path
 
     click_on("Logout")
