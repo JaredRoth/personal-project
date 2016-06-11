@@ -11,12 +11,12 @@ RSpec.feature "Vendor applies to event" do
 
     expect(current_path).to eq(edit_vendor_path)
 
-    expect(page).to have_content(vendor.business_name)
-    expect(page).to have_content(vendor.product_description)
-    expect(page).to have_content(vendor.street_address)
-    expect(page).to have_content(vendor.city)
-    expect(page).to have_content(vendor.state)
-    expect(page).to have_content(vendor.zip)
+    expect(page).to have_selector("input[value='#{vendor.business_name}']")
+    expect(page).to have_selector("input[value='#{vendor.product_description}']")
+    expect(page).to have_selector("input[value='#{vendor.street_address}']")
+    expect(page).to have_selector("input[value='#{vendor.city}']")
+    expect(page).to have_selector("input[value='#{vendor.state}']")
+    expect(page).to have_selector("input[value='#{vendor.zip}']")
 
     click_on "Continue Application"
 

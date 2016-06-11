@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
     session[:vendor_id] = @vendor.id
     if @vendor.is_new
       session[:new_vendor] = true
-      session[:edit_redirect] = profile_path
-      redirect_to edit_vendor_path
+      session[:edit_vendor_redirect] = profile_path
+      redirect_to edit_vendor_path(confirm: "Submit Updated Information")
     else
       flash[:notice] = "Successfully Logged In"
       redirect_to root_path
