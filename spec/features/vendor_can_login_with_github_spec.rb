@@ -12,19 +12,29 @@ RSpec.feature "Vendor logs in with Github" do
     expect(page).not_to have_css(".navbar-fixed")
     expect(Vendor.all.count).to eq(1)
 
-    fill_in :first_name, with: "FName"
-    fill_in :last_name, with: "LName"
-    fill_in :business_name, with: "BName"
-    fill_in :product_description,
+    fill_in :vendor_first_name, with: "FName"
+    fill_in :vendor_last_name, with: "LName"
+    fill_in :vendor_business_name, with: "BName"
+    fill_in :vendor_product_description,
       with: "We sell handcrafted jewelry."
-    fill_in :street_address, with: "1234 Main Street"
-    fill_in :city, with: "Denver"
-    fill_in :state, with: "CO"
-    fill_in :zip, with: "12345"
+    fill_in :vendor_street_address, with: "1234 Main Street"
+    fill_in :vendor_city, with: "Denver"
+    fill_in :vendor_state, with: "CO"
+    fill_in :vendor_zip, with: "12345"
 
-    click_on "Submit"
+    click_on "Submit Updated Information"
 
     expect(Vendor.all.count).to eq(1)
+    vendor = Vendor.first
+    expect(vendor.first_name).to eq("FName")
+    expect(vendor.last_name).to eq("LName")
+    expect(vendor.business_name).to eq("BName")
+    expect(vendor.product_description).to eq("We sell handcrafted jewelry.")
+    expect(vendor.street_address).to eq("1234 Main Street")
+    expect(vendor.city).to eq("Denver")
+    expect(vendor.state).to eq("CO")
+    expect(vendor.zip).to eq("12345")
+
     expect(current_path).to eq(vendor_path)
     expect(page).to have_content("FName")
     expect(page).to have_content("LName")

@@ -7,11 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render partial: "layouts/nav" %>
+  <% unless request.path == edit_vendor_path%>
+    <%= render partial: "layouts/nav" %>
+  <% end %>
   <% flash.each do |type, message| %>
     <%= content_tag :div, message.html_safe, class: "flash-#{type}" %>
   <% end %>
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 <%= javascript_include_tag 'application' %>
 </html>

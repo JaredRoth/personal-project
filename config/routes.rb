@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get "/auth/github", as: :github_login
   get "/auth/github/callback", to: "sessions#create"
 
-  resource :vendor, only: [:edit, :update]
+  resource :vendor, only: [:show, :edit, :update]
 end
