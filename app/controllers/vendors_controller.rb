@@ -9,7 +9,7 @@ class VendorsController < ApplicationController
 
   def update
     @vendor.update(vendor_params)
-    redirect_to vendor_path
+    redirect_to profile_path
   end
 
   private

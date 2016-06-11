@@ -33,9 +33,9 @@ RSpec.feature "Vendor logs in with Github" do
     expect(vendor.street_address).to eq("1234 Main Street")
     expect(vendor.city).to eq("Denver")
     expect(vendor.state).to eq("CO")
-    expect(vendor.zip).to eq("12345")
+    expect(vendor.zip).to eq(12345)
 
-    expect(current_path).to eq(vendor_path)
+    expect(current_path).to eq(profile_path)
     expect(page).to have_content("FName")
     expect(page).to have_content("LName")
     expect(page).to have_content("BName")
