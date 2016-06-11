@@ -13,4 +13,19 @@ class Vendor < ActiveRecord::Base
   def self.create_vendor_from(auth_info)
     create(email: auth_info.info.email)
   end
+
+  def is_new
+    if (first_name.nil? ||
+       last_name.nil? ||
+       business_name.nil? ||
+       product_description.nil? ||
+       street_address.nil? ||
+       city.nil? ||
+       state.nil? ||
+       zip.nil?)
+       true
+     else
+       false
+     end
+  end
 end

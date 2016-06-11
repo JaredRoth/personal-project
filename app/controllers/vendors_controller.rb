@@ -1,23 +1,34 @@
 class VendorsController < ApplicationController
+  before_action :set_vendor
 
-  def new
-    @vendor = Vendor.new
+  def show
   end
 
-  def create
-    @vendor = Vendor.new(vendor_params)
-    if @vendor.save
-      flash[:notice] = "Account successfully created"
-      session[:vendor_id] = @vendor.id
-    else
-      flash[:notice] = @vendor.errors.full_messages.join(", ")
-    end
-    redirect_to root_path
+  def edit
+  end
+
+  def first
+  end
+
+  def update
+    @vendor.update(vendor_params)
+    redirect_to profile_path
   end
 
   private
 
+  def set_vendor
+    @vendor = current_user
+  end
+
   def vendor_params
-    params.require(:vendor).permit(:email)
+    params.require(:vendor).permit( :first_name,
+                                    :last_name,
+                                    :business_name,
+                                    :product_description,
+                                    :street_address,
+                                    :city,
+                                    :state,
+                                    :zip)
   end
 end

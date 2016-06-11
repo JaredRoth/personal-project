@@ -1,10 +1,13 @@
 class SessionsController < ApplicationController
   def create
-    if @vendor = Vendor.o_auth_find_or_create_by(request.env["omniauth.auth"])
-      session[:vendor_id] = @vendor.id
+    @vendor = Vendor.o_auth_find_or_create_by(request.env["omniauth.auth"])
+    session[:vendor_id] = @vendor.id
+    if @vendor.is_new
+      redirect_to first_vendor_path
+    else
       flash[:notice] = "Successfully Logged In"
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
   def destroy

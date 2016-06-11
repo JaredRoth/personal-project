@@ -1,0 +1,13 @@
+<div class="container">
+  <%= form_for @vendor, url: {:controller=>'vendors', :action=>'update'} do |f| %>
+    <p><%= f.text_field :first_name, placeholder: "First" %></p>
+    <p><%= f.text_field :last_name, placeholder: "Last" %></p>
+    <p><%= f.text_field :business_name, placeholder: "Business Name" %></p>
+    <p><%= f.text_field :product_description, placeholder: "Description of Products or Services" %></p>
+    <p><%= f.text_field :street_address, placeholder: "Street Address" %></p>
+    <p><%= f.text_field :city, placeholder: "City" %></p>
+    <p><%= f.text_field :state, placeholder: "State" %></p>
+    <p><%= f.text_field :zip, placeholder: "Zip" %></p>
+    <p><%= f.submit  "Submit Updated Information"%></p>
+  <% end %>
+</div>

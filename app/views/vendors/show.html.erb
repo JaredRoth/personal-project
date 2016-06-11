@@ -1,0 +1,19 @@
+<div class="container">
+  <h3>Your Vendor Information</h2>
+  <h5>Personal:</h4>
+  <ul>
+    <li>First: <%= @vendor.first_name %></li>
+    <li>Last: <%= @vendor.last_name %></li>
+    <li>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %> <%= @vendor.zip %></li>
+  </ul>
+
+<h5>Business:</h5>
+  <div>
+    Name: <%= @vendor.business_name %>
+  </div>
+
+  Product Description:
+  <div>
+    <%= @vendor.product_description %>
+  </div>
+</div>
