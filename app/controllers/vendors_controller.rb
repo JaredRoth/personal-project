@@ -7,12 +7,10 @@ class VendorsController < ApplicationController
   def edit
   end
 
-  def first
-  end
-
   def update
     @vendor.update(vendor_params)
-    redirect_to profile_path
+    session[:new_vendor] = false
+    redirect_to session[:edit_redirect]
   end
 
   private
