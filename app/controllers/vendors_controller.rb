@@ -1,10 +1,13 @@
 class VendorsController < ApplicationController
-  before_action :set_vendor, only: [:show, :edit, :update]
+  before_action :set_vendor
 
   def show
   end
 
   def edit
+  end
+
+  def first
   end
 
   def update

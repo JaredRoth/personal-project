@@ -7,7 +7,7 @@ RSpec.feature "Vendor logs in with Github" do
 
     click_on("Login")
 
-    expect(current_path).to eq(edit_vendor_path)
+    expect(current_path).to eq(first_vendor_path)
     expect(page).not_to have_content("Successfully Logged In")
     expect(page).not_to have_css(".navbar-fixed")
     expect(Vendor.all.count).to eq(1)
@@ -26,6 +26,7 @@ RSpec.feature "Vendor logs in with Github" do
 
     expect(Vendor.all.count).to eq(1)
     vendor = Vendor.first
+    
     expect(vendor.first_name).to eq("FName")
     expect(vendor.last_name).to eq("LName")
     expect(vendor.business_name).to eq("BName")

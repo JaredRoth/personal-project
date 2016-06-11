@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   resource :vendor, only: [:edit, :update]
   get "/profile", to: "vendors#show"
+  get "/edit", to: "vendors#first", as: :first_vendor
 end
