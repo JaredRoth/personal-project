@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
-  validates :name, presence: true
+  belongs_to :city
+
+  validates :title, presence: true
   validates :season, presence: true
   validates :date, presence: true
   # validates :name, uniqueness: {scope: :date}

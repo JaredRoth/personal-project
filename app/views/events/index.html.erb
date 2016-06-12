@@ -1,0 +1,3 @@
+<% @events.each do |event| %>
+  <%= link_to event.title, event_path(@city.name, event.title) %>
+<% end %>

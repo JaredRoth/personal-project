@@ -13,8 +13,20 @@ FactoryGirl.define do
     end
   end
 
+  factory :city do |n|
+    sequence :name, [ 'Carlsbad',
+                      'Encinitas',
+                      'Escondido',
+                      'Fallbrook',
+                      'Oceanside',
+                      'Vista',
+                      'San Marcos'].cycle do |name|
+      name
+    end
+  end
+
   factory :event do
-    sequence :name do |n|
+    sequence :title do |n|
       "Event #{n}"
     end
 
@@ -23,5 +35,6 @@ FactoryGirl.define do
     end
 
     date Date.today
+    city
   end
 end

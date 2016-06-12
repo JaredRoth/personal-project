@@ -8,13 +8,13 @@
       <ul>
         <p><%= "Our #{Date.today.year} schedule:" unless @this_year.empty?%></p>
         <% @this_year.each do |event| %>
-          <li> <%= "#{event.name}: #{event.date.strftime('%B, %e')}" %> </li>
+          <li> <%= "#{event.city.name} #{event.title}: #{event.date.strftime('%B, %e')}" %> </li>
         <% end %>
       </ul>
       <ul>
         <p><%= "Our #{Date.today.next_year.year} schedule:" unless @next_year.empty?%></p>
         <% @next_year.each do |event| %>
-          <li> <%= "#{event.name}: #{event.date.strftime('%B, %e')}" %> </li>
+          <li> <%= "#{event.city.name} #{event.title}: #{event.date.strftime('%B, %e')}" %> </li>
         <% end %>
       </ul>
     </p>
