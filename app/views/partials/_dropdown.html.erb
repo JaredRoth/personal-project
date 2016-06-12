@@ -1,0 +1,6 @@
+<a class='dropdown-button' data-beloworigin='true' data-activates='profile'><%= "#{current_user.first_name} #{current_user.last_name}" %></a>
+<ul id='profile' class='dropdown-content'>
+  <li><%= link_to "Profile", profile_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to "Logout", logout_path, method: :delete %></li>
+</ul>
