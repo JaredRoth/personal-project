@@ -23,6 +23,9 @@ FactoryGirl.define do
                       'San Marcos'].cycle do |name|
       name
     end
+    sequence :description do |n|
+      "This Event has #{n} vendors"
+    end
   end
 
   factory :event do
@@ -32,6 +35,10 @@ FactoryGirl.define do
 
     sequence :season, ['fall', 'spring'].cycle do |season|
       season
+    end
+
+    sequence :days, [1, 2].cycle do |days|
+      days
     end
 
     date Date.today

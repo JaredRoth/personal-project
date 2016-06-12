@@ -15,8 +15,8 @@ RSpec.describe Event, type: :model do
                      title: "Future Event")
 
       expect(Event.this_year.count).to eq(3)
-      expect(Event.this_year.first.title).to eq("First valid Event")
-      expect(Event.this_year.last.title).to eq("Last valid Event")
+      expect(Event.this_year.first).to include("First valid Event")
+      expect(Event.this_year.last).to include("Last valid Event")
     end
   end
 
@@ -34,8 +34,20 @@ RSpec.describe Event, type: :model do
                      title: "First valid Event")
 
       expect(Event.next_year.count).to eq(3)
-      expect(Event.next_year.first.title).to eq("First valid Event")
-      expect(Event.next_year.last.title).to eq("Last valid Event")
+      expect(Event.next_year.first).to include("First valid Event")
+      expect(Event.next_year.last).to include("Last valid Event")
+    end
+  end
+
+  describe ".self.present_events" do
+    scenario "it should return an array of properly formatted single and multi-day events" do
+      city = create(:city)
+      create(:event, date: "May 7, 2017", days: 1, title: "Test", city: city)
+      create(:event, date: "April 29, 2017", days: 2, title: "Test", city: city)
+
+      events = Event.present_events(Event.all)
+      expect(events.first).to eq("#{city.name} Test: May 7")
+      expect(events.last).to eq("#{city.name} Test: April 29-30")
     end
   end
 end

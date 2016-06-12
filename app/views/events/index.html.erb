@@ -1,3 +1,7 @@
-<% @events.each do |event| %>
-  <%= link_to event.title, event_path(@city.name, event.title) %>
-<% end %>
+<div class="container">
+  <% @events.each do |event| %>
+  <div>
+    <div><%= link_to event.title, event_path(@city.name, event.title) %></div>
+  </div>
+  <% end %>
+</div>
