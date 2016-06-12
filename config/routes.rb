@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   get "/auth/github", as: :github_login
   get "/auth/github/callback", to: "sessions#create"
 
-  resource :vendor, only: [:edit, :update]
+  resource :vendor, only: [:update]
   get "/profile", to: "vendors#show"
-  get "/edit", to: "vendors#first", as: :first_vendor
+  get "/edit", to: "vendors#edit", as: :edit_vendor
+  get "/:event", to: "events#show", as: :event
+  get "/:event/apply", to: "applications#new", as: :applications
+  post "/:event/apply", to: "applications#create"
 end
+
+# session[:edit_vendor_redirect] =

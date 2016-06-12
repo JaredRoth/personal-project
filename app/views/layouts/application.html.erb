@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% unless request.path == first_vendor_path%>
+  <% unless session[:new_vendor]%>
     <%= render partial: "partials/nav" %>
   <% end %>
   <% flash.each do |type, message| %>
