@@ -12,5 +12,3 @@ Rails.application.routes.draw do
   get "/:event/apply", to: "applications#new", as: :applications
   post "/:event/apply", to: "applications#create"
 end
-
-# session[:edit_vendor_redirect] =
