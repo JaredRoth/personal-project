@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   resource :vendor, only: [:update]
   get "/profile", to: "vendors#show"
   get "/edit", to: "vendors#edit", as: :edit_vendor
-  get "/:event", to: "events#show", as: :event
-  get "/:event/apply", to: "applications#new", as: :applications
-  post "/:event/apply", to: "applications#create"
+  get "/:city", to: "events#index", as: :city
+  get "/:city/:event", to: "events#show", as: :event
+  get "/:city/:event/apply", to: "applications#new", as: :applications
+  post "/:city/:event/apply", to: "applications#create"
 end
-
-# session[:edit_vendor_redirect] =

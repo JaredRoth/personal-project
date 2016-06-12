@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
-  validates :name, presence: true
+  belongs_to :city
+
+  validates :title, presence: true
   validates :season, presence: true
   validates :date, presence: true
   # validates :name, uniqueness: {scope: :date}
@@ -7,7 +9,7 @@ class Event < ActiveRecord::Base
   def self.this_year
     start = Date.yesterday
     finish = start.end_of_year
-    events = where(date: start..finish).order(:date)
+    where(date: start..finish).order(:date)
   end
 
   def self.next_year

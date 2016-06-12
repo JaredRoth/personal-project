@@ -6,11 +6,11 @@ class ApplicationsController < ApplicationController
   def create
     @application = Application.new(application_params)
     if @application.save
-      flash[:notice] = "Your application to #{params[:event]} has been received"
+      flash[:notice] = "Your application to #{params[:city]}'s #{params[:event]} has been received"
       redirect_to profile_path
-    else
-      flash[:notice] = @application.errors.full_messages.join(", ")
-      render :new
+    # else
+    #   flash[:notice] = @application.errors.full_messages.join(", ")
+    #   render :new
     end
   end
 

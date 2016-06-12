@@ -13,8 +13,23 @@ FactoryGirl.define do
     end
   end
 
+  factory :city do |n|
+    sequence :name, [ 'Carlsbad',
+                      'Encinitas',
+                      'Escondido',
+                      'Fallbrook',
+                      'Oceanside',
+                      'Vista',
+                      'San Marcos'].cycle do |name|
+      name
+    end
+    sequence :description do |n|
+      "This Event has #{n} vendors"
+    end
+  end
+
   factory :event do
-    sequence :name do |n|
+    sequence :title do |n|
       "Event #{n}"
     end
 
@@ -22,6 +37,11 @@ FactoryGirl.define do
       season
     end
 
+    sequence :days, [1, 2].cycle do |days|
+      days
+    end
+
     date Date.today
+    city
   end
 end

@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe Category do
-
+RSpec.describe City do
 end

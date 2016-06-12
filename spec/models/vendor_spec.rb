@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Vendor, type: :model do
+RSpec.describe Vendor do
   describe ".self.create_vendor_from" do
     scenario "it should create a vendor from auth info" do
       auth_info = OmniAuth::AuthHash.new
