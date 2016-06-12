@@ -9,26 +9,13 @@ class Event < ActiveRecord::Base
   def self.this_year
     start = Date.yesterday
     finish = start.end_of_year
-    events = where(date: start..finish).order(:date)
-    present_events(events)
+    where(date: start..finish).order(:date)
   end
 
   def self.next_year
     date = Date.today
     start = date.end_of_year + 1
     finish = date.next_year
-    events = where(date: start..finish).order(:date)
-    present_events(events)
-  end
-
-  def self.present_events(events)
-    events.map do |event|
-      if event.days == 1
-        "#{event.city.name} #{event.title}: #{event.date.strftime('%B%e')}"
-      else
-        finish = event.date + event.days - 1
-        "#{event.city.name} #{event.title}: #{event.date.strftime('%B %e')}-#{finish.strftime('%e')}"
-      end
-    end
+    where(date: start..finish).order(:date)
   end
 end
