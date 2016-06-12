@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event
   def show
-    session[:edit_vendor_redirect] = application_path
+    session[:edit_vendor_redirect] = applications_path
   end
 
   private

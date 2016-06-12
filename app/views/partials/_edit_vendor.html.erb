@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_for @vendor, url: {:controller=>'vendors', :action=>'update'} do |f| %>
+  <%= form_for @vendor do |f| %>
     <p><%= f.text_field :first_name, placeholder: "First" %></p>
     <p><%= f.text_field :last_name, placeholder: "Last" %></p>
     <p><%= f.text_field :business_name, placeholder: "Business Name" %></p>

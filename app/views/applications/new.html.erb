@@ -1,0 +1,8 @@
+<div class="container">
+  <%= form_for @application do |f| %>
+    <p><%= f.number_field :spaces_amount, in: 1..2, step: 1, placeholder: "Number of Spaces Requested" %></p>
+    <p><%= f.check_box :chamber, placeholder: "Chamber Member?" %></p>
+    <p><%= f.check_box :electric, placeholder: "110v 20a Electricity requested?" %></p>
+    <p><%= f.submit "Submit Application" %></p>
+  <% end %>
+</div>

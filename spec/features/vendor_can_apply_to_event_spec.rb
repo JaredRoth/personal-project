@@ -20,15 +20,22 @@ RSpec.feature "Vendor applies to event" do
 
     click_on "Continue Application"
 
-    expect(current_path).to eq("Carlsbad/apply")
+    expect(current_path).to eq("/Carlsbad/apply")
 
-    fill_in :application_space_amount, with: 1
-    fill_in :application_chamber, with: false
-    fill_in :application_electric, with: true
+    fill_in :application_spaces_amount, with: 1
+    # check :application_chamber
+    check :application_electric
 
     click_on "Submit Application"
 
     expect(current_path).to eq(profile_path)
     expect(page).to have_content("Your application to Carlsbad has been received")
+
+    expect(Application.all.count).to eq(1)
+    application = Application.first
+
+    expect(application.spaces_amount).to eq(1)
+    expect(application.chamber).to eq(false)
+    expect(application.electric).to eq(true)
   end
 end
