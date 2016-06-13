@@ -4,10 +4,12 @@
     <%= @city.description %>
   </p>
   <% @events.each do |event| %>
-    <h4><%= event.title %></h4>
-    <h5><%= present_day(event) %></h5>
-    <div>
-      <%= link_to "Apply Online Now", event_path(@city.name, event.title), class: "btn" %>
+    <div id="<%= event.id %>">
+      <h4><%= event.title %></h4>
+      <h5><%= present_day(event) %></h5>
+      <div>
+        <%= link_to "Apply Online Now", event_path(@city.name, event.title), class: "btn" %>
+      </div>
     </div>
   <% end %>
 </div>

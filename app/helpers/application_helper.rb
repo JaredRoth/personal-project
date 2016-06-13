@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def present_day(event)
     if event.days == 1
-      "#{event.date.strftime('%B %e, %Y')}"
+      "#{event.date.strftime('%B%e, %Y')}"
     else
       finish = event.date + event.days - 1
       "#{event.date.strftime('%B %e')}-#{finish.strftime('%e, %Y')}"
