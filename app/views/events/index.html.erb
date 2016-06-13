@@ -1,7 +1,13 @@
 <div class="container">
+  <h3><%= @city.name %></h3>
+  <p>
+    <%= @city.description %>
+  </p>
   <% @events.each do |event| %>
-  <div>
-    <div><%= link_to event.title, event_path(@city.name, event.title) %></div>
-  </div>
+    <h4><%= event.title %></h4>
+    <h5><%= present_day(event) %></h5>
+    <div>
+      <%= link_to "Apply Online Now", event_path(@city.name, event.title), class: "btn" %>
+    </div>
   <% end %>
 </div>

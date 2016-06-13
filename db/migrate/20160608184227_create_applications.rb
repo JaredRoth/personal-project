@@ -3,8 +3,8 @@ class CreateApplications < ActiveRecord::Migration
     create_table :applications do |t|
       t.string :status, default: 0
       t.integer :spaces_amount, default: 1
-      t.boolean :chamber, default: false
-      t.boolean :electric, default: false
+      t.boolean :chamber
+      t.boolean :electric
       t.references :vendor, index: true, foreign_key: true
       t.references :event, index: true, foreign_key: true
 

@@ -5,11 +5,11 @@ RSpec.describe Event do
     scenario "it should return all events this year that have not already happened sorted by date" do
       create(:event, date: Date.today.last_week,
                      title: "Old Event")
-      create(:event, date: Date.tomorrow,
+      create(:event, date: Date.today + 1,
                      title: "First valid Event")
       create(:event, date: Date.today.end_of_year - 1,
                      title: "Last valid Event")
-      create(:event, date: Date.today.next_week,
+      create(:event, date: Date.today + 7,
                      title: "Middle valid Event")
       create(:event, date: Date.today.end_of_year + 1,
                      title: "Future Event")

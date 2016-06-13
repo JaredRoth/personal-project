@@ -1,13 +1,39 @@
 <div class="container">
-  <%= form_for @vendor do |f| %>
-    <p><%= f.text_field :first_name, placeholder: "First" %></p>
-    <p><%= f.text_field :last_name, placeholder: "Last" %></p>
-    <p><%= f.text_field :business_name, placeholder: "Business Name" %></p>
-    <p><%= f.text_field :product_description, placeholder: "Description of Products or Services" %></p>
-    <p><%= f.text_field :street_address, placeholder: "Street Address" %></p>
-    <p><%= f.text_field :city, placeholder: "City" %></p>
-    <p><%= f.text_field :state, placeholder: "State" %></p>
-    <p><%= f.text_field :zip, placeholder: "Zip" %></p>
-    <p><%= f.submit confirm %></p>
-  <% end %>
+  <div class="row">
+    <%= form_for @vendor, html: {class: "col s10"} do |f| %>
+      <div class="row">
+        <div class="input-field col s4">
+          <%= f.text_field :business_name, placeholder: "Business Name" %>
+        </div>
+        <div class="input-field col s4">
+          <%= f.text_field :first_name, placeholder: "First" %>
+        </div>
+        <div class="input-field col s4">
+          <%= f.text_field :last_name, placeholder: "Last" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :product_description, placeholder: "Description of Products or Services" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :street_address, placeholder: "Street Address" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s7">
+          <%= f.text_field :city, placeholder: "City" %>
+        </div>
+        <div class="input-field col s3">
+          <%= f.text_field :state, placeholder: "State" %>
+        </div>
+        <div class="input-field col s2">
+          <%= f.text_field :zip, placeholder: "Zip" %>
+        </div>
+      </div>
+      <p><%= f.submit confirm, class: "btn"%></p>
+    <% end %>
+  </div>
 </div>

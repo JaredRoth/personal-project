@@ -15,4 +15,13 @@ module ApplicationHelper
       "#{event.city.name} #{event.title}: #{event.date.strftime('%B %e')}-#{finish.strftime('%e')}"
     end
   end
+
+  def present_day(event)
+    if event.days == 1
+      "#{event.date.strftime('%B %e, %Y')}"
+    else
+      finish = event.date + event.days - 1
+      "#{event.date.strftime('%B %e')}-#{finish.strftime('%e, %Y')}"
+    end
+  end
 end
