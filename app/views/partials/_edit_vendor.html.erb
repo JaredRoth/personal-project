@@ -1,13 +1,47 @@
 <div class="container">
-  <%= form_for @vendor do |f| %>
-    <p><%= f.text_field :first_name, placeholder: "First" %></p>
-    <p><%= f.text_field :last_name, placeholder: "Last" %></p>
-    <p><%= f.text_field :business_name, placeholder: "Business Name" %></p>
-    <p><%= f.text_field :product_description, placeholder: "Description of Products or Services" %></p>
-    <p><%= f.text_field :street_address, placeholder: "Street Address" %></p>
-    <p><%= f.text_field :city, placeholder: "City" %></p>
-    <p><%= f.text_field :state, placeholder: "State" %></p>
-    <p><%= f.text_field :zip, placeholder: "Zip" %></p>
-    <p><%= f.submit confirm %></p>
-  <% end %>
+  <div class="row">
+    <%= form_for @vendor, html: {class: "col s10 offset-s1"} do |f| %>
+      <div class="row">
+        <div class="input-field col s4">
+          <%= f.label :business_name %>
+          <%= f.text_field :business_name %>
+        </div>
+        <div class="input-field col s4">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+        </div>
+        <div class="input-field col s4">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label :product_description %>
+          <%= f.text_field :product_description, placeholder: "Description of Products or Services", class: "materialize-textarea" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label :street_address %>
+          <%= f.text_field :street_address %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s7">
+          <%= f.label :city %>
+          <%= f.text_field :city %>
+        </div>
+        <div class="input-field col s3">
+          <%= f.label :state %>
+          <%= f.text_field :state %>
+        </div>
+        <div class="input-field col s2">
+          <%= f.label :zip %>
+          <%= f.text_field :zip %>
+        </div>
+      </div>
+      <p><%= f.submit confirm, class: "btn"%></p>
+    <% end %>
+  </div>
 </div>

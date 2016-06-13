@@ -1,23 +1,38 @@
 <div class="container">
-  <h3>Your Vendor Information</h2>
-  <h5>Personal:</h4>
-  <ul>
-    <li>First: <%= @vendor.first_name %></li>
-    <li>Last: <%= @vendor.last_name %></li>
-    <li>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %> <%= @vendor.zip %></li>
-  </ul>
+  <div class="row">
+    <div class="col s6">
+      <h4>Your Vendor Information</h4>
+      <h5>Personal:</h5>
+      <ul>
+        <li>First: <%= @vendor.first_name %></li>
+        <li>Last: <%= @vendor.last_name %></li>
+        <li>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %> <%= @vendor.zip %></li>
+      </ul>
 
-<h5>Business:</h5>
-  <div>
-    Name: <%= @vendor.business_name %>
-  </div>
+      <h5>Business:</h5>
+      <div>
+        Name: <%= @vendor.business_name %>
+      </div>
 
-  Product Description:
-  <div>
-    <%= @vendor.product_description %>
-  </div>
+      Product Description:
+      <div>
+        <%= @vendor.product_description %>
+      </div>
 
-  <div>
-    <%= button_to "Edit your information", edit_vendor_path %>
+      <p>
+        <%= button_to "Edit your information", edit_vendor_path, class: "btn btn-primary"%>
+      </p>
+    </div>
+    <div class="col s6">
+      <h4>Your applications</h4>
+      <% @vendor.applications.each do |application| %>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><%= "#{application.event.city.name} #{application.event.title}" %></span>
+            <p>Status: <%= application.status %><%= " (Not Approved Yet!)" unless application.approved?%></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20160612030345) do
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.string   "status",        default: "0"
+    t.integer  "status",        default: 0
     t.integer  "spaces_amount", default: 1
-    t.boolean  "chamber",       default: false
-    t.boolean  "electric",      default: false
+    t.boolean  "chamber"
+    t.boolean  "electric"
     t.integer  "vendor_id"
     t.integer  "event_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "applications", ["event_id"], name: "index_applications_on_event_id", using: :btree

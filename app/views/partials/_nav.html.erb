@@ -1,11 +1,14 @@
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper container">
-      <a href="/" class="brand-logo">Kennedy & Associates</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%# link_to_dashboard %></li>
-        <li><%= link_to_login_or_logout %></li>
-        <!-- <li><a href="/cart"><i class="large material-icons left">shopping_cart</i><%# cart_contents %></a></li> -->
+  <nav class="navbar-fixed">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">
+        <%= image_tag(asset_path("logo.png"), class: "responsive-img") %>
+      </a>
+      <ul id="nav-mobile" class="right">
+        <% City.all.each do |city| %>
+          <li><%= link_to city.name, city_path("#{city.name}") %></li>
+        <% end %>
+        <li class="active"><%= link_to_login_or_logout %></li>
       </ul>
     </div>
   </nav>

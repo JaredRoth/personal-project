@@ -1,6 +1,7 @@
 class ApplicationsController < ApplicationController
   def new
-    @application = Application.new
+    @event = Event.find_by(title: params[:event])
+    @application = @event.applications.new
   end
 
   def create
@@ -17,6 +18,6 @@ class ApplicationsController < ApplicationController
   private
 
   def application_params
-    params.require(:application).permit(:spaces_amount, :chamber, :electric)
+    params.require(:application).permit(:spaces_amount, :chamber, :electric, :event_id, :vendor_id)
   end
 end

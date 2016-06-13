@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :city
+  has_many :applications
 
   validates :title, presence: true
   validates :season, presence: true

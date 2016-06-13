@@ -1,8 +1,27 @@
 <div class="container">
-  <%= form_for @application do |f| %>
-    <p><%= f.number_field :spaces_amount, in: 1..2, step: 1, placeholder: "Number of Spaces Requested" %></p>
-    <p><%= f.check_box :chamber, placeholder: "Chamber Member?" %></p>
-    <p><%= f.check_box :electric, placeholder: "110v 20a Electricity requested?" %></p>
-    <p><%= f.submit "Submit Application" %></p>
-  <% end %>
+  <div class="row">
+    <%= form_for @application, html: {class: "col s10 offset-s1"} do |f| %>
+    <div class="row">
+      <div class="input-field col s3">
+        <%= f.label :spaces_amount, "Number of spaces desired" %>
+        <%= f.number_field :spaces_amount, in: 1..2, step: 1, placeholder: "Number of Spaces Requested" %>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <%= f.check_box :chamber, class: "filled-in" %>
+        <%= f.label :chamber, "Chamber Member?" %>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <%= f.check_box :electric, class: "filled-in" %>
+        <%= f.label :electric, "Will you need electricity?" %>
+      </div>
+    </div>
+    <%= f.hidden_field :vendor_id, value: current_user.id %>
+    <%= f.hidden_field :event_id, value: @application.event_id %>
+    <p><%= f.submit "Submit Application", class: "btn" %></p>
+    <% end %>
+  </div>
 </div>

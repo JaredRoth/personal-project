@@ -15,9 +15,21 @@
  */
 @import "materialize/components/color";
 $primary-color: color("cyan", "darken-3") !default;
+$secondary-color: color("cyan", "darken-3") !default;
 
 @import "materialize";
 
 nav {
   background-color: #2C6583;
+}
+
+.nav-wrapper .brand-logo img {
+  height: 64px;
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .nav-wrapper .brand-logo img {
+    height: 56px;
+  }
 }

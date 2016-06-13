@@ -9,9 +9,11 @@ RSpec.feature "Vendor applies to event" do
 
     visit "Carlsbad"
 
-    click_on "Village Faire"
+    within("##{event.id}") do
+      click_on "Apply Online Now"
+    end
 
-    click_on "Apply Online for the Next Show!"
+    click_on "Begin Application"
 
     expect(current_path).to eq(edit_vendor_path)
 
