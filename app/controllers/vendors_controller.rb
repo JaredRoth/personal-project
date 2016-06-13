@@ -5,6 +5,9 @@ class VendorsController < ApplicationController
   end
 
   def edit
+    # if request.referrer == applications_path
+    #   session[:event]
+    # end
   end
 
   def update
