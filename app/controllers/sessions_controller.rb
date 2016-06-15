@@ -5,16 +5,16 @@ class SessionsController < ApplicationController
     if @vendor.is_new
       session[:new_vendor] = true
       session[:edit_vendor_redirect] = profile_path
-      redirect_to edit_vendor_path(confirm: "Submit Updated Information")
+      redirect_to edit_vendor_path(confirm: "Finalize Registration")
     else
       flash[:notice] = "Successfully Logged In"
-      redirect_to root_path
+      redirect_to :back
     end
   end
 
   def destroy
     session.clear
     flash[:notice] = "Successfully Logged Out"
-    redirect_to root_path
+    redirect_to :back
   end
 end

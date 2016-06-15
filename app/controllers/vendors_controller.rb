@@ -5,17 +5,18 @@ class VendorsController < ApplicationController
   end
 
   def edit
-    # if request.referrer == applications_path
-    #   session[:event]
-    # end
   end
 
   def update
-    @vendor.update(vendor_params)
-    session[:new_vendor] = false
-    path = session[:edit_vendor_redirect]
-    session[:edit_vendor_redirect] = nil
-    redirect_to path
+    if @vendor.update(vendor_params)
+      session[:new_vendor] = false
+      path = session[:edit_vendor_redirect]
+      session[:edit_vendor_redirect] = nil
+      redirect_to path
+    else
+      flash.now[:notice] = @vendor.errors.full_messages.join(", ")
+      render :edit, locals: {confirm: params[:confirm]}
+    end
   end
 
   private
