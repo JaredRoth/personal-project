@@ -2,6 +2,7 @@ class VendorsController < ApplicationController
   before_action :set_vendor
 
   def show
+    session[:edit_vendor_redirect] = profile_path
   end
 
   def edit
