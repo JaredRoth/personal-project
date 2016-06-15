@@ -22,7 +22,7 @@ RSpec.feature "Vendor logs in with Github" do
     fill_in :vendor_state, with: "CO"
     fill_in :vendor_zip, with: "12345"
 
-    click_on "Submit Updated Information"
+    click_on "Finalize Registration"
 
     expect(Vendor.all.count).to eq(1)
     vendor = Vendor.first

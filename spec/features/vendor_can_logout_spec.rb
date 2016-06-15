@@ -4,8 +4,8 @@ RSpec.feature "Vendor can logout" do
   scenario "When they are logged in" do
     vendor = create(:full_vendor)
 
-    visit github_login_path
-
+    visit root_path
+    click_on("Login")
     click_on("Logout")
 
     expect(page).to have_content("Login")
