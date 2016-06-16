@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Vendor applies to event" do
-  scenario "it should create a new application with their information" do
+  scenario "it should create a new application with their information", js: true do
     vendor = create(:full_vendor)
     city = create(:city, name: "Carlsbad")
     event = create(:event, title: "Village Faire", city: city)
@@ -9,7 +9,7 @@ RSpec.feature "Vendor applies to event" do
 
     visit "Carlsbad"
 
-    within("##{event.id}") do
+    within("##{event.title.parameterize}") do
       click_on "Apply Online Now"
     end
 
@@ -30,12 +30,24 @@ RSpec.feature "Vendor applies to event" do
 
     fill_in :application_spaces_amount, with: 1
     # check :application_chamber
-    check :application_electric
+    # find("#application_electric").trigger("click")
+    page.execute_script('$("#application_electric").trigger("click")')
+    # check :application_electric
 
-    click_on "Submit Application"
+    click_on "Proceed to Payment"
 
-    expect(current_path).to eq(profile_path)
+    sleep(3)
+    stripe_iframe = all('iframe[name=stripe_checkout_app]').last
+    Capybara.within_frame stripe_iframe do
+      page.execute_script(%Q{ $('input#card_number').val('4242424242424242'); })
+      page.execute_script(%Q{ $('input#cc-exp').val('08/44'); })
+      page.execute_script(%Q{ $('input#cc-csc').val('999'); })
+      page.execute_script(%Q{ $('#submitButton').click(); })
+      sleep(7)
+    end
+
     expect(page).to have_content("Your application to Carlsbad's Village Faire has been received")
+    expect(current_path).to eq(profile_path)
 
     expect(Application.all.count).to eq(1)
     application = Application.first

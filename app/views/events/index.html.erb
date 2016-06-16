@@ -4,7 +4,7 @@
     <%= @city.description %>
   </p>
   <% @events.each do |event| %>
-    <div id="<%= event.id %>">
+    <div id="<%= event.title.parameterize %>">
       <h4><%= event.title %></h4>
       <h5><%= present_day(event) %></h5>
       <div>

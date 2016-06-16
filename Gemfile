@@ -11,12 +11,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'omniauth-github'
+gem 'stripe'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'capybara'
+  # gem "capybara-webkit"
+  gem 'selenium-webdriver'
   gem 'launchy'
 end
 
