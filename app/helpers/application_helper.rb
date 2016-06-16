@@ -3,6 +3,7 @@ module ApplicationHelper
     if current_user
       render partial: "partials/dropdown"
     else
+      session[:back] = request.original_url
       link_to "Login", github_login_path
     end
   end

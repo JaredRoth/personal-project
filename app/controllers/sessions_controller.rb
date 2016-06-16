@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       redirect_to edit_vendor_path(confirm: "Finalize Registration")
     else
       flash[:notice] = "Successfully Logged In"
-      redirect_to :back
+      redirect_to session[:back]
     end
   end
 
