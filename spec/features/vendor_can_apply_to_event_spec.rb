@@ -30,17 +30,21 @@ RSpec.feature "Vendor applies to event" do
 
     fill_in :application_spaces_amount, with: 1
     # check :application_chamber
-    find("#application_electric").trigger("click")
+    # find("#application_electric").trigger("click")
+    page.execute_script('$("#application_electric").trigger("click")')
     # check :application_electric
 
     click_on "Proceed to Payment"
 
-    fill_in "card_number", with: 4242424242424242
-    fill_in "cc-exp", with: Date.today.next_year
-    fill_in "cc-csc", with: 123
-    click_on "Submit Application $75.00"
-
-    # can't get the spec to recognize the page change (over 6 hours on this stupid problem)
+    sleep(3)
+    stripe_iframe = all('iframe[name=stripe_checkout_app]').last
+    Capybara.within_frame stripe_iframe do
+      page.execute_script(%Q{ $('input#card_number').val('4242424242424242'); })
+      page.execute_script(%Q{ $('input#cc-exp').val('08/44'); })
+      page.execute_script(%Q{ $('input#cc-csc').val('999'); })
+      page.execute_script(%Q{ $('#submitButton').click(); })
+      sleep(7)
+    end
 
     expect(page).to have_content("Your application to Carlsbad's Village Faire has been received")
     expect(current_path).to eq(profile_path)
