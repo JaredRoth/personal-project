@@ -4,6 +4,7 @@ class ApplicationsController < ApplicationController
     @application = @event.applications.new
   end
 
+  # # Replace create with this create if not using stripe
   # def create
   #   @application = Application.new(application_params)
   #   if @application.save
