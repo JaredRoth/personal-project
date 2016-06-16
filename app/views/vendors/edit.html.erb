@@ -1,10 +1,13 @@
 <div class="container">
-
-  <% if params[:confirm] = "Continue Application"%>
-    <div class="row">
-      <h4 class="col offset-s1">Confirm Your Contact Information</h4>
-    </div>
-  <% end %>
+  <div class="row">
+    <h4 class="col offset-s1">
+      <% if params[:confirm] == "Continue Application"%>
+        Confirm Your Information Is Up To Date
+      <% else %>
+        <%= params[:confirm] %>
+      <% end %>
+    </h4>
+  </div>
 
   <%= render partial: "partials/edit_vendor", locals: {confirm: params[:confirm]} %>
 </div>
