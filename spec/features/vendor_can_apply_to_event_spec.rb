@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "Vendor applies to event", js: true do
-  scenario "it should create a new application with their information" do
+RSpec.feature "Vendor applies to event" do
+  scenario "it should create a new application with their information", js: true do
     vendor = create(:full_vendor)
     city = create(:city, name: "Carlsbad")
     event = create(:event, title: "Village Faire", city: city)
@@ -9,7 +9,7 @@ RSpec.feature "Vendor applies to event", js: true do
 
     visit "Carlsbad"
 
-    within("##{event.id}") do
+    within("##{event.title.parameterize}") do
       click_on "Apply Online Now"
     end
 
@@ -30,17 +30,20 @@ RSpec.feature "Vendor applies to event", js: true do
 
     fill_in :application_spaces_amount, with: 1
     # check :application_chamber
-    check :application_electric
+    find("#application_electric").trigger("click")
+    # check :application_electric
 
-    click_button "Proceed to Payment"
+    click_on "Proceed to Payment"
 
     fill_in "card_number", with: 4242424242424242
     fill_in "cc-exp", with: Date.today.next_year
     fill_in "cc-csc", with: 123
-    fill_in "billing-zip", with: 12345
+    click_on "Submit Application $75.00"
 
-    expect(current_path).to eq(profile_path)
+    # can't get the spec to recognize the page change (over 6 hours on this stupid problem)
+
     expect(page).to have_content("Your application to Carlsbad's Village Faire has been received")
+    expect(current_path).to eq(profile_path)
 
     expect(Application.all.count).to eq(1)
     application = Application.first
