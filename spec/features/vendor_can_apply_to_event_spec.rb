@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Vendor applies to event" do
+RSpec.feature "Vendor applies to event", js: true do
   scenario "it should create a new application with their information" do
     vendor = create(:full_vendor)
     city = create(:city, name: "Carlsbad")
@@ -32,7 +32,12 @@ RSpec.feature "Vendor applies to event" do
     # check :application_chamber
     check :application_electric
 
-    click_on "Submit Application"
+    click_button "Proceed to Payment"
+
+    fill_in "card_number", with: 4242424242424242
+    fill_in "cc-exp", with: Date.today.next_year
+    fill_in "cc-csc", with: 123
+    fill_in "billing-zip", with: 12345
 
     expect(current_path).to eq(profile_path)
     expect(page).to have_content("Your application to Carlsbad's Village Faire has been received")

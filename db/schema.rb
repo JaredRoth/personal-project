@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612030345) do
+ActiveRecord::Schema.define(version: 20160615232415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,11 @@ ActiveRecord::Schema.define(version: 20160612030345) do
     t.boolean  "electric"
     t.integer  "vendor_id"
     t.integer  "event_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "fee",           default: 7500
+    t.string   "card_token"
+    t.string   "email"
   end
 
   add_index "applications", ["event_id"], name: "index_applications_on_event_id", using: :btree
