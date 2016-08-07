@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+  def new
+
+  end
+  
   def create
     @vendor = Vendor.o_auth_find_or_create_by(request.env["omniauth.auth"])
     session[:vendor_id] = @vendor.id

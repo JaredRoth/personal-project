@@ -4,7 +4,7 @@ module ApplicationHelper
       render partial: "partials/dropdown"
     else
       session[:back] = request.original_url
-      link_to "Login", github_login_path
+      link_to "Login", login_path
     end
   end
 
@@ -12,7 +12,7 @@ module ApplicationHelper
     if current_user
       already_applied_link(city, event)
     else
-      link_to "Log in to apply", github_login_path, class: "btn"
+      link_to "Log in to apply", login_path, class: "btn"
     end
   end
 

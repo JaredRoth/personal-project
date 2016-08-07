@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root to: "welcome#index"
+  root "welcome#index"
 
-  delete "/logout", to: "sessions#destroy"
-  get "/auth/github", as: :github_login
-  get "/auth/github/callback", to: "sessions#create"
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
 
   resource :vendor, only: [:update]
   get "/profile", to: "vendors#show"
