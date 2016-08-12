@@ -18,11 +18,4 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
-
-  OmniAuth.config.test_mode = true
-  OmniAuth.config.add_mock(
-    :github,
-    info: {
-      email: "vendor@example.com"
-    })
 end

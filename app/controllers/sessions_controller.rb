@@ -2,17 +2,16 @@ class SessionsController < ApplicationController
   def new
 
   end
-  
+
   def create
-    @vendor = Vendor.o_auth_find_or_create_by(request.env["omniauth.auth"])
-    session[:vendor_id] = @vendor.id
-    if @vendor.is_new
-      session[:new_vendor] = true
-      session[:edit_vendor_redirect] = profile_path
-      redirect_to edit_vendor_path(confirm: "Finalize Registration")
-    else
+    @vendor = Vendor.find_by(email: params[:session][:email])
+    if @vendor && @vendor.authenticate(params[:session][:password])
+      session[:vendor_id] = @vendor.id
       flash[:notice] = "Successfully Logged In"
       redirect_to session[:back]
+    else
+      flash.now[:error] = "Log in info does not match our records"
+      render :new
     end
   end
 

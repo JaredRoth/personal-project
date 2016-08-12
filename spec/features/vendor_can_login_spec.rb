@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "Vendor logs in with Github" do
-  scenario "it should create a new vendor if they don't exist and redirect them to the update page" do
+RSpec.feature "Vendor logs in" do
+  scenario "it should create a new vendor if they don't exist and redirect them to the page they came from" do
     expect(Vendor.all.count).to eq(0)
     visit root_path
 
@@ -47,7 +47,7 @@ RSpec.feature "Vendor logs in with Github" do
     expect(page).to have_content("12345")
   end
 
-  scenario "it should log a vendor in if they do exist" do
+  scenario "it should log a vendor in if they do exist and redirect them to the page they came from" do
     expect(Vendor.all.count).to eq(0)
     vendor = create(:full_vendor)
     expect(Vendor.all.count).to eq(1)
